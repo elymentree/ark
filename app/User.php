@@ -16,9 +16,13 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+
+	protected $guarded = []; // USE THIS TO REMOVE ALL PROTECTION TO FILLABLE COLUMNS N THE DATABASE
+    /*
     protected $fillable = [
         'name', 'email', 'password',
-    ];
+    ]; // */
 
     /**
      * The attributes that should be hidden for arrays.
@@ -37,4 +41,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function posts()
+    {
+    	return $this->hasMany(Post::class);
+    }
+
 }
